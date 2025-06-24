@@ -32,7 +32,7 @@ html {
 
 @media (max-width: 768px) {
   html {
-    scroll-padding-top: 470px;
+    scroll-padding-top: 10px;
   }
 }
 
@@ -603,12 +603,45 @@ button.toggle-btn:focus {
 }
 
 @media (max-width: 768px) {
-  .risks-table {
-    font-size: 0.95rem;
+  .risks-table, 
+  .risks-table thead, 
+  .risks-table tbody, 
+  .risks-table th, 
+  .risks-table td, 
+  .risks-table tr {
+    display: block;
+    width: 45%;
   }
 
- 
+  .risks-table thead {
+    display: none; /* Hide table header */
+  }
+
+  .risks-table tr {
+    margin-bottom: 1rem;
+    background-color: #222;
+    border-radius: 6px;
+    padding: 1rem;
+    width: 100%;
+    box-shadow: 0 0 4px rgba(66, 176, 124, 0.1);
+  } 
+
+  .risks-table td {
+    border: none;
+    padding: 0.5rem 0;
+    position: relative;
+    width: 100%;
+  }
+
+  .risks-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    color: #a0f2c9;
+    margin-bottom: 0.25rem;
+  }
 }
+
 
 /* Footer */
 footer {
@@ -626,18 +659,22 @@ footer {
 
 /* Media Queries */
 @media (max-width: 480px) {
-  header h1 {
+    header{
+        position: relative;
+    }
+    header h1 {
     font-size: 2rem;
   }
   nav ul {
     gap: 0.75rem;
   }
   .feature-cards {
-    flex-direction: column;
+    flex-direction: row;
     gap: 12px;
+    flex-wrap: wrap;
   }
   .feature-card {
-    flex: 1 1 100%;
+    flex: 1 1 30%;
   }
   .timeline {
     padding-left: 10px;
@@ -651,6 +688,9 @@ footer {
   }
   section {
     padding: 20px 15px;
+  }
+  .timeline-item{
+    flex-wrap: wrap;
   }
 }
 
@@ -957,24 +997,25 @@ footer {
           <th>Mitigation Strategy</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Low initial sign-up rate</td>
-          <td>Launch influencer campaigns + exclusive early discounts</td>
-        </tr>
-        <tr>
-          <td>Delays in tech integration</td>
-          <td>Build buffer time into timeline + parallel testing phases</td>
-        </tr>
-        <tr>
-          <td>Low engagement with emails</td>
-          <td>A/B test subject lines, send times, and personalized content</td>
-        </tr>
-        <tr>
-          <td>Customer confusion on tiers</td>
-          <td>Clear messaging and simple tier benefits communication</td>
-        </tr>
-      </tbody>
+<tbody>
+  <tr>
+    <td data-label="Risk">Low initial sign-up rate</td>
+    <td data-label="Mitigation Strategy">Launch influencer campaigns + exclusive early discounts</td>
+  </tr>
+  <tr>
+    <td data-label="Risk">Delays in tech integration</td>
+    <td data-label="Mitigation Strategy">Build buffer time into timeline + parallel testing phases</td>
+  </tr>
+  <tr>
+    <td data-label="Risk">Low engagement with emails</td>
+    <td data-label="Mitigation Strategy">A/B test subject lines, send times, and personalized content</td>
+  </tr>
+  <tr>
+    <td data-label="Risk">Customer confusion on tiers</td>
+    <td data-label="Mitigation Strategy">Clear messaging and simple tier benefits communication</td>
+  </tr>
+</tbody>
+
     </table>
   </div>
 </section>
